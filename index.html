@@ -224,49 +224,11 @@
     <div class="card">
       <h3>Supabase</h3>
       <ol class="steps">
-        <li>Tap <b>Set up automatically with access token</b> and paste the <code>sbp_</code> token.</li>
+        <li>Under <b>Supabase</b>, tap <b>Connect with access token</b> and paste the <code>sbp_</code> token. That token is the only thing you enter.</li>
         <li>Got more than one project? Pick the one you made for VocaPin, then confirm.</li>
-        <li>Done. The app builds its table and fills in the URL and key for you. Words start syncing right away.</li>
+        <li>New here? The app creates its table. Already have one from before? It just reuses it, words and all. Either way you'll see <b>Connected</b> and syncing starts right away.</li>
         <li>Now go back to <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Access Tokens</a> and <b>delete the token</b>. The app already forgot it and keeps working without it.</li>
       </ol>
-
-      <details>
-        <summary>Prefer to set it up by hand?</summary>
-        <ol class="steps">
-          <li>In your project open <b>SQL Editor</b> › <b>New query</b>, paste this, tap <b>Run</b>.</li>
-        </ol>
-        <div class="code">
-          <button class="copy" type="button" data-target="sql">Copy</button>
-<pre id="sql">create table if not exists public.words (
-  key         text primary key,
-  word        text not null,
-  lemma       text not null default '',
-  phonetic    text not null default '',
-  lang        text not null default 'English',
-  meanings    jsonb not null default '[]'::jsonb,
-  example     jsonb,
-  gloss_m_idx int not null default 0,
-  gloss_k_idx int not null default 0,
-  stage       int not null default 1 check (stage between 1 and 3),
-  saved_at    timestamptz not null,
-  definition  text generated always as (meanings -> 0 -> 'trans' ->> 0) stored
-);
-
-alter table public.words enable row level security;
-
-drop policy if exists "vocapin anon full access" on public.words;
-create policy "vocapin anon full access"
-  on public.words for all to anon
-  using (true) with check (true);
-
-grant select, insert, update, delete on public.words to anon;</pre>
-        </div>
-        <ol class="steps" style="counter-reset: s 1">
-          <li><b>Project Settings › Data API</b>: copy the <b>Project URL</b>, set <b>Max rows</b> to <code>20000</code>.</li>
-          <li><b>Project Settings › API Keys</b>: copy the <b>Publishable key</b> (<code>sb_publishable_…</code>). Never the secret one.</li>
-          <li>In VocaPin Settings paste the URL and key, tap <b>Test connection</b>.</li>
-        </ol>
-      </details>
     </div>
 
     <div class="card">
