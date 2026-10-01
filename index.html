@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VocaPin Download</title>
+<meta name="description" content="Download the VocaPin app">
+<style>
+  :root {
+    --bg: #f7f8fb; --card: #ffffff; --text: #1d2330; --muted: #5d6677;
+    --accent: #3b6cf6; --accent-text: #ffffff; --border: #e3e6ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151c; --card: #1b1f29; --text: #e8ebf2; --muted: #9aa3b5;
+      --accent: #6b8eff; --accent-text: #0e1117; --border: #2a303d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.6;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 64px 16px; }
+  .logo {
+    width: 72px; height: 72px; border-radius: 18px; background: var(--accent);
+    color: var(--accent-text); display: grid; place-items: center;
+    font-size: 36px; font-weight: 700; margin-bottom: 20px;
+  }
+  h1 { font-size: 2.2rem; margin: 0 0 8px; }
+  .tagline { color: var(--muted); font-size: 1.1rem; margin: 0 0 40px; }
+  .downloads { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .dl {
+    display: block; padding: 18px 20px; border-radius: 14px; text-decoration: none;
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    transition: border-color .15s, transform .15s;
+  }
+  .dl:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .dl strong { display: block; font-size: 1.05rem; }
+  .dl span { color: var(--muted); font-size: .9rem; }
+  .dl.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+  .dl.primary span { color: var(--accent-text); opacity: .85; }
+  .dl.disabled { opacity: .55; cursor: default; }
+  .dl.disabled:hover { border-color: var(--border); transform: none; }
+  .meta { margin-top: 24px; color: var(--muted); font-size: .9rem; }
+  .meta a { color: var(--accent); }
+  .notice {
+    margin-top: 40px; padding: 20px 22px; border-radius: 14px;
+    background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+  }
+  .notice h2 { font-size: 1.1rem; margin: 0 0 6px; }
+  .notice > p { margin: 0 0 14px; color: var(--muted); }
+  .notice ul { margin: 0; padding-left: 20px; }
+  .notice li + li { margin-top: 10px; }
+  .notice a { color: var(--accent); }
+  footer { margin-top: 64px; color: var(--muted); font-size: .85rem; }
+  .guide { margin-top: 40px; }
+  .guide h2 { font-size: 1.25rem; margin: 0 0 12px; }
+  .guide ol { padding-left: 22px; margin: 0; }
+  .guide li + li { margin-top: 8px; }
+  .guide a { color: var(--accent); }
+  code, pre { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: .85rem; }
+  code { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+  .code { position: relative; margin: 14px 0; }
+  .code pre {
+    margin: 0; padding: 16px; overflow-x: auto; border-radius: 12px;
+    background: var(--card); border: 1px solid var(--border); line-height: 1.5;
+  }
+  .copy {
+    position: absolute; top: 8px; right: 8px; padding: 4px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; font: inherit; font-size: .8rem;
+  }
+  .copy:hover { border-color: var(--accent); }
+  .warn, .tip {
+    margin: 16px 0 0; padding: 14px 16px; border-radius: 12px; font-size: .92rem;
+    background: var(--card); border: 1px solid var(--border);
+  }
+  .warn { border-left: 4px solid #d9822b; }
+  .tip { border-left: 4px solid var(--accent); }
+  .tip b:first-child { display: block; margin-bottom: 4px; }
+  .lead { color: var(--muted); margin: 0 0 12px; }
+  .method { margin-top: 20px; padding: 16px 18px; border-radius: 12px; background: var(--card); border: 1px solid var(--border); }
+  .method h3 { font-size: 1rem; margin: 0 0 10px; }
+  .note { color: var(--muted); font-size: .92rem; margin: 12px 0 0; }
+  .toc { margin: 12px 0 0; padding-left: 22px; }
+  .toc li + li { margin-top: 8px; }
+  .toc a { font-weight: 600; color: var(--accent); }
+  .toc span { display: block; color: var(--muted); font-size: .9rem; }
+  .notice ol a:hover { text-decoration: underline; }
+  details { margin-top: 20px; padding: 14px 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--border); }
+  summary { cursor: pointer; font-weight: 600; }
+  details[open] summary { margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">V</div>
+  <h1>VocaPin</h1>
+  <p class="tagline">Read in English, tap any word, and pin it to your vocabulary.</p>
+
+  <div class="downloads">
+    <a class="dl primary" data-file="vocapin.apk" href="#">
+      <strong>Android</strong><span>Download APK</span>
+    </a>
+    <a class="dl disabled" aria-disabled="true">
+      <strong>iPhone</strong><span>Coming soon (no iPhone to test on yet)</span>
+    </a>
+  </div>
+
+  <p class="meta">
+    Latest version: <span id="version">checking…</span> ·
+    <a id="all-releases" href="#">All releases</a>
+  </p>
+
+  <section class="notice" id="toc">
+    <h2>Before you start</h2>
+    <p>VocaPin runs on two free services: <strong>Supabase</strong> stores and syncs your words, and <strong>Gemini</strong> looks up meanings and example sentences. You connect both once. Each user can save up to 20,000 words.</p>
+    <ol class="toc">
+      <li><a href="#keys">Sign up and get your keys</a> <span>Supabase access token · Gemini API key</span></li>
+      <li><a href="#setup">Put the keys into the app</a> <span>one-time setup in Settings</span></li>
+      <li><a href="#study">How I study with VocaPin</a> <span>two ways to save words</span></li>
+    </ol>
+  </section>
+
+  <section class="guide" id="keys">
+    <h2>1. Sign up and get your keys</h2>
+
+    <div class="method">
+      <h3>1-1 · Supabase access token</h3>
+      <ol>
+        <li>Sign up at <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com</a>. The free plan is enough.</li>
+        <li>Click <b>New project</b>. Enter a name and a database password, pick the region closest to you, and click <b>Create new project</b>. Wait about a minute until it is ready.</li>
+        <li>Open <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Account &gt; Access Tokens</a> and click <b>Generate new token</b>. If you can pick an expiry, choose the shortest one.</li>
+        <li>Copy the token. It starts with <code>sbp_</code>. You will paste it into the app in step 2.</li>
+      </ol>
+      <p class="warn">This token can control your whole Supabase account. Paste it only into VocaPin, and delete it after setup (step 2 reminds you).</p>
+    </div>
+
+    <div class="method">
+      <h3>1-2 · Gemini API key</h3>
+      <ol>
+        <li>Sign in to Google with a <b>personal account</b> such as a gmail.com address.</li>
+        <li>Open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio API keys</a>. Accept the terms if this is your first visit.</li>
+        <li>Click <b>Create API key</b>. Choose an existing Google Cloud project or let AI Studio create one.</li>
+        <li>Copy the key. It starts with <code>AIza</code>. No credit card is needed for the free tier.</li>
+      </ol>
+      <div class="tip">
+        <b>Seeing "you do not have access to AI Studio"?</b>
+        You are signed in with a work or school account, and your organization has turned AI Studio off.
+        Switch to a personal Google account from the profile icon in the top right, or open the link in a private window and sign in there.
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="setup">
+    <h2>2. Put the keys into the app</h2>
+    <p class="lead">Install the APK, open VocaPin, and go to the <b>Settings</b> tab.</p>
+
+    <div class="method">
+      <h3>2-1 · Supabase</h3>
+      <ol>
+        <li>Tap <b>Set up automatically with access token</b> and paste the token from step 1-1.</li>
+        <li>If you have several projects, pick the one you made for VocaPin, then confirm.</li>
+        <li>The app creates its table and fills in the project URL and key by itself. Your words start syncing right away.</li>
+        <li>Go back to <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Access Tokens</a> and <b>delete the token</b>. The app has already discarded it and keeps working without it.</li>
+      </ol>
+
+      <details>
+        <summary>Prefer to set it up by hand?</summary>
+        <ol>
+          <li>In your project, open <b>SQL Editor</b>, click <b>New query</b>, paste the SQL below, and click <b>Run</b>.</li>
+        </ol>
+        <div class="code">
+          <button class="copy" type="button" data-target="sql">Copy</button>
+<pre id="sql">create table if not exists public.words (
+  key         text primary key,
+  word        text not null,
+  lemma       text not null default '',
+  phonetic    text not null default '',
+  lang        text not null default 'English',
+  meanings    jsonb not null default '[]'::jsonb,
+  example     jsonb,
+  gloss_m_idx int not null default 0,
+  gloss_k_idx int not null default 0,
+  stage       int not null default 1 check (stage between 1 and 3),
+  saved_at    timestamptz not null,
+  definition  text generated always as (meanings -> 0 -> 'trans' ->> 0) stored
+);
+
+alter table public.words enable row level security;
+
+drop policy if exists "vocapin anon full access" on public.words;
+create policy "vocapin anon full access"
+  on public.words for all to anon
+  using (true) with check (true);
+
+grant select, insert, update, delete on public.words to anon;</pre>
+        </div>
+        <ol start="2">
+          <li>Open <b>Project Settings</b> &gt; <b>Data API</b>. Copy the <b>Project URL</b>, and set <b>Max rows</b> to <code>20000</code>.</li>
+          <li>Open <b>Project Settings</b> &gt; <b>API Keys</b> and copy the <b>Publishable key</b>. It starts with <code>sb_publishable_</code>. Never use the secret key.</li>
+          <li>In VocaPin <b>Settings</b>, paste the URL and the key, and tap <b>Test connection</b>.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="method">
+      <h3>2-2 · Gemini</h3>
+      <ol>
+        <li>Under <b>Gemini API Key</b>, paste the key from step 1-2.</li>
+        <li>Tap <b>Test connection</b>. A green "Connected" means you are done.</li>
+      </ol>
+    </div>
+
+    <p class="note">On Android, Settings also lists three permissions that must be on so saving from other apps works on mobile data. Turn them all on.</p>
+  </section>
+
+  <section class="guide" id="study">
+    <h2>3. How I study with VocaPin</h2>
+    <p class="lead">You never type a word into VocaPin. Wherever you meet an English word, select it and tap <b>voca-pin save</b> in the text selection menu. These are the two ways I use every day.</p>
+
+    <div class="method">
+      <h3>Method 1 · Circle to Search</h3>
+      <ol>
+        <li>While reading anything on your phone, long-press the <b>home button</b> or navigation bar to open Circle to Search.</li>
+        <li>Tap the word you do not know. It appears in the search box.</li>
+        <li>Add <code>meaning</code> after the word and search.</li>
+        <li>In the results, long-press the word to select it, then tap <b>voca-pin save</b> in the selection menu. If you do not see it, tap <b>⋮</b> (more) first.</li>
+      </ol>
+      <p class="note">Circle to Search is available on Galaxy and Pixel phones. On other phones, search the word in Chrome instead and save from there.</p>
+    </div>
+
+    <div class="method">
+      <h3>Method 2 · Ask Gemini or ChatGPT</h3>
+      <ol>
+        <li>Open Gemini or ChatGPT and ask about the word, for example <code>what does "resilient" mean?</code></li>
+        <li>In the answer, long-press the word to select it.</li>
+        <li>Tap <b>voca-pin save</b> in the selection menu.</li>
+      </ol>
+    </div>
+
+    <p class="note">Either way, VocaPin looks the word up with Gemini in the background, saves it with its meaning and an example sentence, and shows a small toast. Review your words later in the <b>Vocab</b> tab with flashcards.</p>
+  </section>
+
+  <footer>© VocaPin</footer>
+</main>
+
+<script>
+  // Repository that hosts the release builds. Change only this line if it moves.
+  const REPO = "voca-pin/vocapin";
+  const base = `https://github.com/${REPO}/releases`;
+
+  document.querySelectorAll(".dl[data-file]").forEach(a => {
+    a.href = `${base}/latest/download/${a.dataset.file}`;
+  });
+  document.getElementById("all-releases").href = base;
+
+  fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => { document.getElementById("version").textContent = d.tag_name; })
+    .catch(() => { document.getElementById("version").textContent = "not released yet"; });
+
+  document.querySelectorAll(".copy").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const text = document.getElementById(btn.dataset.target).textContent;
+      try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+      catch { btn.textContent = "Select and copy"; }
+      setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+    });
+  });
+</script>
+</body>
+</html>
