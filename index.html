@@ -177,7 +177,7 @@
   <div class="intro" id="toc">
     <p><b>Free to run, forever.</b> VocaPin uses two free services you own: <b>Supabase</b> stores your words, <b>Gemini</b> finds the meanings. Three quick steps and you're in. Up to 20,000 words per user.</p>
     <ul class="toc">
-      <li><a href="#keys"><span class="n">1</span><span><span class="t">Grab your keys</span><span class="s">Supabase token · Gemini key</span></span><span class="arrow">›</span></a></li>
+      <li><a href="#keys"><span class="n">1</span><span><span class="t">Grab your keys</span><span class="s">Gemini key · Supabase token</span></span><span class="arrow">›</span></a></li>
       <li><a href="#setup"><span class="n">2</span><span><span class="t">Drop them in the app</span><span class="s">one-time setup</span></span><span class="arrow">›</span></a></li>
       <li><a href="#study"><span class="n">3</span><span><span class="t">How I actually study</span><span class="s">two moves, every day</span></span><span class="arrow">›</span></a></li>
       <li><a href="#feedback"><span class="n">4</span><span><span class="t">Bugs and requests</span><span class="s">open a GitHub issue</span></span><span class="arrow">›</span></a></li>
@@ -188,17 +188,6 @@
     <span class="kicker">Step 1</span>
     <h2>Grab your keys</h2>
     <p class="lead">Two sign-ups, both free, no credit card. About five minutes.</p>
-
-    <div class="card">
-      <h3>Supabase access token</h3>
-      <ol class="steps">
-        <li>Sign up at <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com</a>. Free plan is plenty.</li>
-        <li>Tap <b>New project</b>. Name it, set a database password, pick the region closest to you. Wait a minute while it spins up.</li>
-        <li>Open <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Account › Access Tokens</a> and tap <b>Generate new token</b>. If it asks for an expiry, pick the shortest.</li>
-        <li>Copy the token. It starts with <code>sbp_</code>. You'll paste it into the app in step 2.</li>
-      </ol>
-      <p class="warn">This token can control your whole Supabase account. Paste it only into VocaPin, then delete it after setup (step 2 reminds you).</p>
-    </div>
 
     <div class="card">
       <h3>Gemini API key</h3>
@@ -214,6 +203,17 @@
         That page is showing your work account. Tap the profile icon at the top right and switch to the personal one, or open the link in a private / incognito window and sign in with it there.
       </div>
     </div>
+
+    <div class="card">
+      <h3>Supabase access token</h3>
+      <ol class="steps">
+        <li>Sign up at <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com</a>. Free plan is plenty.</li>
+        <li>Tap <b>New project</b>. Name it, set a database password, pick the region closest to you. Wait a minute while it spins up.</li>
+        <li>Open <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Account › Access Tokens</a> and tap <b>Generate new token</b>. If it asks for an expiry, pick the shortest.</li>
+        <li>Copy the token. It starts with <code>sbp_</code>. You'll paste it into the app in step 2.</li>
+      </ol>
+      <p class="warn">This token can control your whole Supabase account. Paste it only into VocaPin, then delete it after setup (step 2 reminds you).</p>
+    </div>
   </section>
 
   <section id="setup">
@@ -222,20 +222,20 @@
     <p class="lead">Install the APK, open VocaPin, head to the <b>Settings</b> tab.</p>
 
     <div class="card">
-      <h3>Supabase</h3>
-      <ol class="steps">
-        <li>Under <b>Supabase</b>, tap <b>Connect with access token</b> and paste the <code>sbp_</code> token. That token is the only thing you enter.</li>
-        <li>Got more than one project? Pick the one you made for VocaPin, then confirm.</li>
-        <li>New here? The app creates its table. Already have one from before? It just reuses it, words and all. Either way you'll see <b>Connected</b> and syncing starts right away.</li>
-        <li>Now go back to <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Access Tokens</a> and <b>delete the token</b>. The app already forgot it and keeps working without it.</li>
-      </ol>
-    </div>
-
-    <div class="card">
       <h3>Gemini</h3>
       <ol class="steps">
         <li>Under <b>Gemini API Key</b>, paste the <code>AIza</code> key.</li>
         <li>Tap <b>Test connection</b>. Green "Connected" = you're done.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Supabase</h3>
+      <ol class="steps">
+        <li>Under <b>Supabase Personal Access Token</b>, paste the <code>sbp_</code> token and tap <b>Connect</b>. That token is the only thing you enter for Supabase.</li>
+        <li>Got more than one project? Pick the one you made for VocaPin, then confirm.</li>
+        <li>New here? The app creates its table. Already have one from before? It just reuses it, words and all. Either way you'll see <b>Connected</b> and syncing starts right away.</li>
+        <li>Now go back to <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Access Tokens</a> and <b>delete the token</b>. The app already forgot it and keeps working without it.</li>
       </ol>
     </div>
 
