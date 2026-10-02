@@ -141,6 +141,9 @@
   }
 
   footer { margin: 60px 0 0; text-align: center; color: var(--muted); font-size: 13.5px; }
+  footer p { margin: 0 0 10px; }
+  footer .thanks { max-width: 44ch; margin: 0 auto 14px; line-height: 1.55; }
+  footer .thanks b { color: var(--text); font-weight: 600; }
 
 </style>
 
@@ -276,7 +279,10 @@
       <p class="note">Check <a href="https://github.com/voca-pin/voca-pin.github.io/issues" target="_blank" rel="noopener">open issues</a> first. If yours is already there, add a comment or a thumbs-up instead of a new one.</p>
     </div>
   </section>
-  <footer>© VocaPin</footer>
+  <footer>
+    <p class="thanks">VocaPin runs for free because two teams give their work away: <b>Google</b>, whose Gemini 3.5 Flash-Lite answers every lookup on its free tier, and <b>Supabase</b>, whose free database keeps your words. Thank you both.</p>
+    <p>© VocaPin</p>
+  </footer>
 </main>
 
 <script>
