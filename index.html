@@ -163,7 +163,7 @@
       Get it on Android
     </a>
     <span class="ios"><b>iPhone</b> · coming soon (no iPhone to test on yet)</span>
-    <span class="pill"><span class="dot"></span> Latest <span id="version">…</span> · <a id="all-releases" href="#">all releases</a></span>
+    <span class="pill"><span class="dot"></span> Latest <span id="version">…</span><span id="downloads"></span> · <a id="all-releases" href="#">all releases</a></span>
   </header>
 
   <div class="intro" id="toc">
@@ -298,9 +298,19 @@
   });
   document.getElementById("all-releases").href = base;
 
-  fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
+  // Latest tag + downloads summed over every release asset (GitHub counts these for free).
+  fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100`)
     .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => { document.getElementById("version").textContent = d.tag_name; })
+    .then(list => {
+      const releases = list.filter(r => !r.draft);
+      if (!releases.length) return Promise.reject();
+      document.getElementById("version").textContent = releases[0].tag_name;
+      const total = releases.flatMap(r => r.assets).reduce((n, a) => n + (a.download_count || 0), 0);
+      if (total > 0) {
+        document.getElementById("downloads").textContent =
+          ` · ${total.toLocaleString()} download${total === 1 ? "" : "s"}`;
+      }
+    })
     .catch(() => { document.getElementById("version").textContent = "not out yet"; });
 
   document.querySelectorAll(".copy").forEach(btn => {
