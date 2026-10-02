@@ -213,8 +213,14 @@
     <div class="card">
       <h3>Supabase access token</h3>
       <ol class="steps">
-        <li>Sign up at <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com</a>. Free plan is plenty. No need to create a project — VocaPin makes one named <code>vocapin</code> for you.</li>
-        <li>Open <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Account › Access Tokens</a> and tap <b>Generate new token</b>. Pick the <b>shortest expiry</b> and keep the default (full) permissions.</li>
+        <li>Sign up at <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com</a>. Free plan is plenty. No need to create a project — VocaPin makes one named <code>voca-pin</code> for you.</li>
+        <li>Open <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener">Account › Access Tokens</a> and tap <b>Generate new token</b>. Set it up like this:
+          <ul style="margin:6px 0 0;padding-left:18px;color:var(--muted)">
+            <li><b>Expiry</b>: 24 hours. The app forgets the token right after setup, so a short life is all you need.</li>
+            <li><b>Scope</b>: your organization (VocaPin needs to create a project in it).</li>
+            <li><b>Access</b>: full access (read &amp; write). Read-only can't create the project or raise the row limit.</li>
+          </ul>
+        </li>
         <li>Copy the token. It starts with <code>sbp_</code>. You'll paste it into the app in step 2.</li>
       </ol>
       <p class="warn">This token can control your whole Supabase account. Paste it only into VocaPin. The app never stores it, and it expires on its own.</p>
@@ -238,7 +244,7 @@
       <h3>Supabase</h3>
       <ol class="steps">
         <li>Under <b>Supabase Personal Access Token</b>, paste the <code>sbp_</code> token and tap <b>Connect</b>. That token is the only thing you enter for Supabase.</li>
-        <li>The button turns yellow and shows what it's doing. First time, it creates the <code>vocapin</code> project (about a minute) and its table. Already have one? It just reuses it, words and all. You can keep using the app meanwhile.</li>
+        <li>The button turns yellow and shows what it's doing. First time, it creates the <code>voca-pin</code> project (about a minute) and its table. Already have one? It just reuses it, words and all. You can keep using the app meanwhile.</li>
         <li>When you see <b>Connected</b>, syncing is on. The app has already forgotten the token.</li>
       </ol>
     </div>
